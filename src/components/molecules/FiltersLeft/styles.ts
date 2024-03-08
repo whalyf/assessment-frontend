@@ -16,4 +16,8 @@ export const WrapperFiltersLeft = styled.aside`
     color: #1e2b50;
     margin-bottom: 0;
   }
+
+  /* > div div {
+    background-color: 
+  } */
 `;

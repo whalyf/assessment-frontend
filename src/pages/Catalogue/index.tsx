@@ -46,13 +46,20 @@ export const Catalogue = () => {
     }
   }, [location]);
 
+  const handleFetchByFilter = useCallback(() => {
+
+    
+  }, []);
+
   useEffect(() => {
     handleLoadProducts();
   }, [handleLoadProducts]);
   return (
     <>
       <WrapperCatalogue>
-        <FiltersLeft />
+        {products?.filters && products?.filters.length > 0 && (
+          <FiltersLeft products={products} />
+        )}
         <ProductsSection>
           <ProductsHeader>
             <span>{location.pathname.split("/produtos/")}</span>
