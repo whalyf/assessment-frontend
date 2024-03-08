@@ -1,0 +1,6 @@
+{
+  "/api/V1/categories/list": "/list",
+  "/api/V1/categories/1": "/1",
+  "/api/V1/categories/2": "/2",
+  "/api/V1/categories/3": "/3"
+}
