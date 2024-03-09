@@ -7,7 +7,7 @@ import { FiltersLeft } from "../../components/molecules/FiltersLeft";
 import { Products } from "../../components/molecules/Products";
 
 // TYPES
-import { TProduct } from "../../types/types";
+import { TColors, TGender, TProduct } from "../../types/types";
 
 // STYLES
 import { Footer } from "../../components/atoms/Footer";
@@ -46,19 +46,66 @@ export const Catalogue = () => {
     }
   }, [location]);
 
-  const handleFetchByFilter = useCallback(() => {
+  const handleFilter = useCallback(
+    ({
+      filterType,
+      filterSelected,
+      reload = false,
+    }: {
+      filterType?: "color" | "gender" | "order";
+      filterSelected?: TColors | TGender | "expensive" | "cheaper";
+      reload?: boolean;
+    }) => {
+      if (reload) {
+        handleLoadProducts();
+      }
 
-    
-  }, []);
+      if (!filterType || !filterSelected) return;
+
+      if (filterType !== "order") {
+        const filteredArrayOfProducts = products?.items.filter((product) => {
+          if (product.filter[0][filterType] === filterSelected) {
+            return product;
+          }
+        });
+
+        setProducts({
+          filters: products?.filters,
+          items: filteredArrayOfProducts,
+        } as TProduct);
+      } else {
+        if (!products) return;
+        const ordered = products.items.sort((a, b) => {
+          const priceA = a.specialPrice || a.price;
+          const priceB = b.specialPrice || b.price;
+
+          if (filterSelected === "cheaper") {
+            return priceA - priceB;
+          } else if (filterSelected === "expensive") {
+            return priceB - priceA;
+          } else {
+            return a.sku.localeCompare(b.sku);
+          }
+        });
+
+        setProducts({
+          ...products,
+          items: ordered,
+        });
+      }
+    },
+    [products, handleLoadProducts]
+  );
 
   useEffect(() => {
     handleLoadProducts();
   }, [handleLoadProducts]);
+
   return (
     <>
       <WrapperCatalogue>
         {products?.filters && products?.filters.length > 0 && (
-          <FiltersLeft products={products} />
+          <FiltersLeft products={products} handleFilter={handleFilter} />
         )}
         <ProductsSection>
           <ProductsHeader>
@@ -75,10 +122,19 @@ export const Catalogue = () => {
               </div>
               <div className="order-right">
                 <span>ORDENAR POR</span>
-                <select name="order" id="select-order">
+                <select
+                  name="order"
+                  id="select-order"
+                  onChange={(e) =>
+                    handleFilter({
+                      filterType: "order",
+                      filterSelected: e.target.value as "cheaper" | "expensive",
+                    })
+                  }
+                >
+                  <option value="relevance">RELEVÂNCIA</option>
                   <option value="expensive">MAIOR PREÇO</option>
                   <option value="cheaper">MENOR PREÇO</option>
-                  <option value="relevance">RELEVÂNCIA</option>
                 </select>
               </div>
             </div>

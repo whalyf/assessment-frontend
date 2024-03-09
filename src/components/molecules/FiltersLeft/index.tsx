@@ -1,11 +1,49 @@
-import { TProduct } from "../../../types/types";
-import { WrapperFiltersLeft } from "./styles";
+import { Trash } from "lucide-react";
+import { TColors, TGender, TProduct } from "../../../types/types";
+import {
+  ColorButton,
+  ColorSection,
+  GenderSection,
+  WrapperFiltersLeft,
+} from "./styles";
 
-export const FiltersLeft = ({ products }: { products: TProduct }) => {
-  console.log(Object.keys(products.filters[0]).length);
+export const FiltersLeft = ({
+  products,
+  handleFilter,
+}: {
+  products: TProduct;
+  handleFilter: ({
+    filterType,
+    filterSelected,
+    reload,
+  }: {
+    filterType?: "color" | "gender";
+    filterSelected?: TColors | TGender;
+    reload?: boolean;
+  }) => void;
+}) => {
+  const colorsArray =
+    Object.keys(products.filters[0])[0] === "color" &&
+    Array.from(
+      new Set(
+        products.items.reduce((acc, item) => {
+          const color = item.filter[0]?.color;
+          if (color) {
+            acc.push(color as TColors);
+          }
+          return acc;
+        }, [] as TColors[])
+      )
+    );
+
   return (
     <WrapperFiltersLeft>
-      <h3>FILTRE POR</h3>
+      <h3>
+        FILTRE POR{" "}
+        <button onClick={() => handleFilter({ reload: true })}>
+          <Trash color="#cb0d1f" />
+        </button>
+      </h3>
 
       <div>
         <h4>CATEGORIAS</h4>
@@ -18,23 +56,54 @@ export const FiltersLeft = ({ products }: { products: TProduct }) => {
 
       {Object.keys(products.filters[0]).length > 0 &&
         Object.keys(products.filters[0])[0] === "color" && (
-          <div>
+          <ColorSection>
             <h4>CORES</h4>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+            <div>
+              {!!colorsArray &&
+                colorsArray.length > 0 &&
+                colorsArray.map((eachColor) => (
+                  <ColorButton
+                    key={eachColor}
+                    $color={eachColor}
+                    onClick={() =>
+                      handleFilter({
+                        filterType: "color",
+                        filterSelected: eachColor,
+                      })
+                    }
+                  />
+                ))}
+            </div>
+          </ColorSection>
         )}
 
       {Object.keys(products.filters[0]).length > 0 &&
         Object.keys(products.filters[0])[0] === "gender" && (
-          <div>
+          <GenderSection>
             <h4>GÊNERO</h4>
             <ul>
-              <li>Masculino</li>
-              <li>Feminino</li>
+              <li
+                onClick={() =>
+                  handleFilter({
+                    filterType: "gender",
+                    filterSelected: "Masculina",
+                  })
+                }
+              >
+                Masculino
+              </li>
+              <li
+                onClick={() =>
+                  handleFilter({
+                    filterType: "gender",
+                    filterSelected: "Feminina",
+                  })
+                }
+              >
+                Feminino
+              </li>
             </ul>
-          </div>
+          </GenderSection>
         )}
 
       <div>

@@ -22,7 +22,7 @@ export const WrapperLogoWithSearchBar = styled.div`
       border: none;
       background-color: #cb0d1f;
       color: #fff;
-      font-weight: bold;
+      font-weight: 800;
       font-size: 1rem;
       text-transform: uppercase;
     }

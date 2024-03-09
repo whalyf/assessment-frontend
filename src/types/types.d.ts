@@ -1,3 +1,13 @@
+export type TColors =
+  | "Preta"
+  | "Laranja"
+  | "Amarela"
+  | "Rosa"
+  | "Cinza"
+  | "Azul"
+  | "Bege";
+
+export type TGender = "Masculina" | "Feminina";
 export type TProduct = {
   items: [
     {
@@ -8,34 +18,13 @@ export type TProduct = {
       price: number;
       sku: `sku-${number}`;
       specialPrice: number;
+      filter: [
+        {
+          color?: TColors;
+          gender?: TGender;
+        }
+      ];
     }
   ];
-} & (
-  | {
-      filters: [{ gender: "Gênero" }];
-      items: [
-        {
-          filter: [{ gender: "Masculina" | "Feminina" }];
-        }
-      ];
-    }
-  | {
-      filters: [{ color: "Cor" }];
-      items: [
-        {
-          filter: [
-            {
-              color:
-                | "Preta"
-                | "Laranja"
-                | "Amarela"
-                | "Rosa"
-                | "Cinza"
-                | "Azul"
-                | "Bege";
-            }
-          ];
-        }
-      ];
-    }
-);
+  filters: [{ gender?: "Gênero"; color?: "Cor" }];
+};
