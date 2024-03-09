@@ -6,15 +6,17 @@ export const ProductCard = ({
   price,
   promo = 0,
   sku,
+  $layoutStyle,
 }: {
   src: string;
   sku: string;
   name: string;
   price: number;
   promo?: number;
+  $layoutStyle: "list" | "grid";
 }) => {
   return (
-    <WrapperProductCard $promo={promo}>
+    <WrapperProductCard $promo={promo} $layoutStyle={$layoutStyle}>
       <img src={`../${src}`} alt={sku} />
       <span className="product-name">{name}</span>
       <div>

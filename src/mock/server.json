@@ -150,6 +150,7 @@
         "name": "Tênis Preto Couro",
         "image": "media/shoes-1.jpg",
         "price": 129.9,
+        "specialPrice":89.9,
         "filter": [
           {
             "color": "Preta"
@@ -274,7 +275,137 @@
             "color": "Azul"
           }
         ]
+      },{
+        "id": 41,
+        "sku": "sku-41",
+        "path": "tenis-verde",
+        "name": "Tênis Verde Masculino",
+        "image": "media/shoes-3.jpg",
+        "price": 150.0,
+        "filter": [
+          {
+            "color": "Amarela"
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "sku": "sku-42",
+        "path": "tenis-amarelo",
+        "name": "Tênis Amarelo Neon",
+        "image": "media/shoes-4.jpg",
+        "price": 170.0,
+        "filter": [
+          {
+            "color": "Amarela"
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "sku": "sku-43",
+        "path": "tenis-marrom",
+        "name": "Tênis Marrom Casual",
+        "image": "media/shoes-6.jpg",
+        "price": 110.0,
+        "filter": [
+          {
+            "color": "Marrom"
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "sku": "sku-44",
+        "path": "tenis-cinza",
+        "name": "Tênis Cinza Masculino",
+        "image": "media/shoes-7.jpg",
+        "price": 145.0,
+        "filter": [
+          {
+            "color": "Cinza"
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "sku": "sku-45",
+        "path": "tenis-rosa-claro",
+        "name": "Tênis Rosa Claro Feminino",
+        "image": "media/shoes-8.jpg",
+        "price": 160.0,
+        "filter": [
+          {
+            "color": "Rosa"
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "sku": "sku-46",
+        "path": "tenis-azul-marinho",
+        "name": "Tênis Azul Marinho Masculino",
+        "image": "media/shoes-9.jpg",
+        "price": 175.0,
+        "filter": [
+          {
+            "color": "Azul"
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "sku": "sku-47",
+        "path": "tenis-laranja",
+        "name": "Tênis Laranja Neon",
+        "image": "media/shoes-10.jpg",
+        "price": 130.0,
+        "filter": [
+          {
+            "color": "Laranja"
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "sku": "sku-48",
+        "path": "tenis-bege-claro",
+        "name": "Tênis Bege Claro Unissex",
+        "image": "media/shoes-1.jpg",
+        "price": 155.0,
+        "filter": [
+          {
+            "color": "Bege"
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "sku": "sku-49",
+        "path": "tenis-preto-dourado",
+        "name": "Tênis Preto com Detalhes Dourados",
+        "image": "media/shoes-2.jpg",
+        "price": 180.0,
+        "filter": [
+          {
+            "color": "Preta"
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "sku": "sku-50",
+        "path": "tenis-azul-celeste",
+        "name": "Tênis Azul Celeste Unissex",
+        "image": "media/shoes-3.jpg",
+        "price": 165.0,
+        "filter": [
+          {
+            "color": "Azul"
+          }
+        ]
       }
+      
     ]
   },
   "list": {

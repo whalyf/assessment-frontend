@@ -2,18 +2,35 @@ import styled, { css } from "styled-components";
 
 interface IWrapperProductCard {
   $promo: number;
+  $layoutStyle: "list" | "grid";
 }
 
 export const WrapperProductCard = styled.div<IWrapperProductCard>`
-  display: flex;
-  flex-direction: column;
-  width: 13.5rem;
-  align-items: center;
-  text-align: center;
+  ${(props) =>
+    props.$layoutStyle === "grid"
+      ? css`
+          display: flex;
+          flex-direction: column;
+          width: 13.5rem;
+          align-items: center;
+          text-align: center;
+        `
+      : css`
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          width: 100%;
+        `}
+
   > img {
     border: 1px solid #e2dedc;
     width: 13.5rem;
     height: 14.5rem;
+    ${(props) =>
+      props.$layoutStyle === "list" &&
+      css`
+        margin-right: 20px;
+      `}
   }
 
   .product-name {
@@ -45,6 +62,12 @@ export const WrapperProductCard = styled.div<IWrapperProductCard>`
           text-decoration: line-through;
         `}
     }
+
+    ${(props) =>
+      props.$layoutStyle === "list" &&
+      css`
+        width: 25%;
+      `}
   }
 
   > button {
@@ -60,5 +83,11 @@ export const WrapperProductCard = styled.div<IWrapperProductCard>`
       cursor: pointer;
       background-color: #00d8a9;
     }
+
+    ${(props) =>
+      props.$layoutStyle === "list" &&
+      css`
+        width: 25%;
+      `}
   }
 `;

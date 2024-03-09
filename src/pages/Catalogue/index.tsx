@@ -11,12 +11,18 @@ import { TColors, TGender, TProduct } from "../../types/types";
 
 // STYLES
 import { Footer } from "../../components/atoms/Footer";
-import { ProductsHeader, ProductsSection, WrapperCatalogue } from "./styles";
+import {
+  LayoutStyle,
+  ProductsHeader,
+  ProductsSection,
+  WrapperCatalogue,
+} from "./styles";
 
 export const Catalogue = () => {
   const apiUrl = "http://localhost:8888/api/V1/categories";
   const location = useLocation();
   const [products, setProducts] = useState<TProduct | null>(null);
+  const [gridList, setGridList] = useState<"grid" | "list">("grid");
   interface Routes {
     [key: string]: number;
   }
@@ -112,14 +118,20 @@ export const Catalogue = () => {
             <span>{location.pathname.split("/produtos/")}</span>
             <hr />
             <div>
-              <div className="icons-left">
-                <button>
-                  <LayoutGrid size={25} color="#00A8A9" />
+              <LayoutStyle>
+                <button onClick={() => setGridList("grid")}>
+                  <LayoutGrid
+                    size={25}
+                    color={gridList === "grid" ? "#cb0d1f" : "#00A8A9"}
+                  />
                 </button>
-                <button>
-                  <List size={25} color="#00A8A9" />
+                <button onClick={() => setGridList("list")}>
+                  <List
+                    size={25}
+                    color={gridList === "list" ? "#cb0d1f" : "#00A8A9"}
+                  />
                 </button>
-              </div>
+              </LayoutStyle>
               <div className="order-right">
                 <span>ORDENAR POR</span>
                 <select
@@ -140,7 +152,7 @@ export const Catalogue = () => {
             </div>
           </ProductsHeader>
           {products?.items && products?.items.length > 0 && (
-            <Products products={products} />
+            <Products products={products} $layoutStyle={gridList} />
           )}
         </ProductsSection>
       </WrapperCatalogue>

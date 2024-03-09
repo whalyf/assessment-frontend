@@ -35,24 +35,6 @@ export const ProductsHeader = styled.div`
     justify-content: space-between;
     width: 100%;
     padding-bottom: 20px;
-    > .icons-left {
-      width: 50%;
-      align-items: center;
-      display: flex;
-      justify-content: flex-start;
-
-      > button {
-        border: none;
-        background-color: transparent;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        :hover {
-          cursor: pointer;
-        }
-      }
-    }
-
     > .order-right {
       display: flex;
       width: 50%;
@@ -64,6 +46,24 @@ export const ProductsHeader = styled.div`
         color: #808185;
         font-weight: bold;
       }
+    }
+  }
+`;
+
+export const LayoutStyle = styled.div`
+  width: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+
+  > button {
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    :hover {
+      cursor: pointer;
     }
   }
 `;

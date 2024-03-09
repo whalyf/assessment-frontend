@@ -1,9 +1,15 @@
 import { TProduct } from "../../../types/types";
 import { ProductCard } from "../ProductCard";
 import { WrapperProducts } from "./styles";
-export const Products = ({ products }: { products: TProduct }) => {
+export const Products = ({
+  products,
+  $layoutStyle,
+}: {
+  products: TProduct;
+  $layoutStyle: "list" | "grid";
+}) => {
   return (
-    <WrapperProducts>
+    <WrapperProducts $layoutStyle={$layoutStyle}>
       {products.items.map((product) => (
         <ProductCard
           src={product.image}
@@ -12,6 +18,7 @@ export const Products = ({ products }: { products: TProduct }) => {
           promo={product.specialPrice}
           sku={product.sku}
           key={product.sku}
+          $layoutStyle={$layoutStyle}
         />
       ))}
     </WrapperProducts>
