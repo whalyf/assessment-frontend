@@ -9,7 +9,7 @@ export const WrapperSections = styled.div`
   > a {
     text-transform: uppercase;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 800;
     color: #fff;
   }
 `;
