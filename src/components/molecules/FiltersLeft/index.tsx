@@ -36,6 +36,20 @@ export const FiltersLeft = ({
       )
     );
 
+  const gendersArray =
+    Object.keys(products.filters[0])[0] === "gender" &&
+    Array.from(
+      new Set(
+        products.items.reduce((acc, item) => {
+          const gender = item.filter[0]?.gender;
+          if (gender) {
+            acc.push(gender as TGender);
+          }
+          return acc;
+        }, [] as TGender[])
+      )
+    );
+
   return (
     <WrapperFiltersLeft>
       <h3>
@@ -82,26 +96,22 @@ export const FiltersLeft = ({
           <GenderSection>
             <h4>GÊNERO</h4>
             <ul>
-              <li
-                onClick={() =>
-                  handleFilter({
-                    filterType: "gender",
-                    filterSelected: "Masculina",
-                  })
-                }
-              >
-                Masculino
-              </li>
-              <li
-                onClick={() =>
-                  handleFilter({
-                    filterType: "gender",
-                    filterSelected: "Feminina",
-                  })
-                }
-              >
-                Feminino
-              </li>
+              {!!gendersArray &&
+                gendersArray.length > 0 &&
+                gendersArray.map((gender) => (
+                  <li>
+                    <button
+                      onClick={() =>
+                        handleFilter({
+                          filterType: "gender",
+                          filterSelected: gender,
+                        })
+                      }
+                    >
+                      {gender}
+                    </button>
+                  </li>
+                ))}
             </ul>
           </GenderSection>
         )}

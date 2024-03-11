@@ -56,7 +56,11 @@ export const ColorButton = styled.button<TColorButton>`
 `;
 
 export const GenderSection = styled.div`
-  > ul li:hover {
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  > ul li button {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
   }
 `;
