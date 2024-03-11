@@ -1,6 +1,6 @@
 # WebJump Frontend
 
-Este repositório contém o código-fonte do projeto frontend da WebJump. O projeto foi desenvolvido utilizando tecnologias modernas, adaptando para diferentes tamanhos de telas.
+Este repositório contém o código-fonte do projeto frontend da WebJump. O projeto foi desenvolvido utilizando tecnologias modernas, adaptando para diferentes tamanhos de telas. A aplicação permite também filtrar os items por *Gênero* ou *Cor*.
 
 ## Tecnologias Utilizadas
 
